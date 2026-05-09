@@ -257,13 +257,17 @@ export default function JoyfulLightWebsite() {
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
           {["Managing Director", "Technology Lead", "Client Support"].map((role) => (
             <div key={role} className="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 text-center shadow-sm">
-              <img
-              src="/logo.png"
-              alt="Logo"
-              className="h-14 w-auto object-contain"
-              />
-              <h3 className="text-xl font-black">Team Member</h3>
-              <p className="mt-2 text-slate-500">{role}</p>
+             <img
+  src={
+    role === "Managing Director"
+      ? "/MD.png"
+      : role === "Technology Lead"
+      ? "/TL.png"
+      : "/CS.png"
+  }
+  alt={role}
+  className="mx-auto mb-5 h-28 w-28 rounded-full object-cover shadow-lg"
+/>
             </div>
           ))}
         </div>
