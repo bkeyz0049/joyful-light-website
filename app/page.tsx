@@ -106,7 +106,11 @@ export default function JoyfulLightWebsite() {
               <p className="text-xs font-medium text-yellow-300">SCIENTIFIC AND TECHNOLOGY LTD</p>
             </div>
           </a>
-
+        <div className="w-full overflow-hidden bg-yellow-400 py-2">
+        <div className="animate-[marquee_15s_linear_infinite] whitespace-nowrap text-sm font-bold text-[#061d49]">
+            Development Ongoing, Please Check Back Later
+        </div>
+        </div>
           <div className="hidden items-center gap-7 lg:flex">
             {nav.map((item) => (
               <a key={item} href={item === "Payment" ? "/payment" : `#${item.toLowerCase()}`} className="text-sm font-semibold text-white/80 transition hover:text-yellow-300">
