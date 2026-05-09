@@ -149,13 +149,29 @@ export default function JoyfulLightWebsite() {
        </div>
        </div>
 
-        <p className="mb-5 inline-flex rounded-full border border-yellow-300/40 bg-white/10 px-4 py-2 text-sm font-bold text-yellow-300 backdrop-blur">
-              IT Services • Data • Websites • CAC • Writing
-      </p>
-        
-            <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">
-            Joyful-Light Scientific and Technology Limited helps businesses, entrepreneurs, and organizations build a strong digital presence, make data-driven decisions, complete business documentation, and access professional technology support.
-            </h1>
+        <h1 className="text-3xl font-extrabold leading-tight text-white md:text-5xl">
+  Meet Our CEO
+</h1>
+
+<div className="mt-8">
+  <img
+    src="/ceo.jpg"
+    alt="CEO of Joyful-Light Scientific and Technology Limited"
+    className="h-64 w-64 rounded-3xl object-cover shadow-2xl"
+  />
+</div>
+
+<div className="mt-8 max-w-2xl">
+  <h2 className="text-2xl font-bold text-yellow-300">About Me</h2>
+
+  <p className="mt-4 text-base leading-7 text-white/80">
+    I am the CEO of Joyful-Light Scientific and Technology Limited, a company committed to providing reliable IT services, data analysis, dashboard creation, website development, CAC registration support, and professional writing services.
+  </p>
+
+  <p className="mt-4 text-base leading-7 text-white/80">
+    My vision is to help businesses, entrepreneurs, and organizations use technology, data, and professional documentation to grow, improve operations, and build a stronger digital presence.
+  </p>
+</div>
             <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
               {company.name} provides professional IT services, dashboard creation, website development, CAC registration support, and writing services from {company.location}.
             </p>
