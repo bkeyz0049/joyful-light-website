@@ -71,7 +71,15 @@ const faqs = [
   },
 ];
 
-function SectionTitle({ label, title, text }) {
+function SectionTitle({
+  label,
+  title,
+  text,
+}: {
+  label: string;
+  title: string;
+  text?: string;
+}) {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       <p className="mb-3 text-sm font-bold uppercase tracking-[0.25em] text-yellow-400">{label}</p>
