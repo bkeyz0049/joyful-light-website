@@ -106,7 +106,7 @@ export default function JoyfulLightWebsite() {
   </p>
 
   <p className="mt-1 text-sm font-semibold tracking-wide text-yellow-300">
-    SCIENTIFIC AND TECHNOLOGY LTD
+    SCIENTIFIC AND TECH LTD
   </p>
 </div>
           </a>
@@ -144,7 +144,7 @@ export default function JoyfulLightWebsite() {
         <div className="relative mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <div className="mb-6 w-full overflow-hidden py-2">
-        <div className="animate-[marquee_12s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
+        <div className="animate-[marquee_25s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
                  ⚠️ Please Note: This Website is undergoing Developemt, Please Check Back Later 😠🥴🙂❌⚠️
        </div>
        </div>
