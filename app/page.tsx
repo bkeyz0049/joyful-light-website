@@ -137,16 +137,20 @@ export default function JoyfulLightWebsite() {
           </div>
         )}
       </header>
-       <div className="animate-[marquee_15s_linear_infinite] whitespace-nowrap text-sm font-bold text-[#061d49]">
-            Development Ongoing, Please Check Back Later
-        </div>
       <section id="home" className="relative overflow-hidden bg-[#061d49] pt-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#0b63f6_0%,transparent_34%),radial-gradient(circle_at_bottom_left,#ffd84d_0%,transparent_22%)] opacity-70" />
         <div className="relative mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <p className="mb-5 inline-flex rounded-full border border-yellow-300/40 bg-white/10 px-4 py-2 text-sm font-bold text-yellow-300 backdrop-blur">
+        <div className="mb-6 w-full overflow-hidden rounded-full bg-yellow-400 py-2">
+        <div className="animate-[marquee_15s_linear_infinite] whitespace-nowrap text-sm font-bold text-[#061d49]">
+               Development Ongoing, Please Check Back Later
+       </div>
+       </div>
+
+        <p className="mb-5 inline-flex rounded-full border border-yellow-300/40 bg-white/10 px-4 py-2 text-sm font-bold text-yellow-300 backdrop-blur">
               IT Services • Data • Websites • CAC • Writing
-            </p>
+        </p>
+        
             <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">
             Joyful-Light Scientific and Technology Limited helps businesses, entrepreneurs, and organizations build a strong digital presence, make data-driven decisions, complete business documentation, and access professional technology support.
             </h1>
