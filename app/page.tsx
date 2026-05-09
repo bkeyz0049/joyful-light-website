@@ -150,16 +150,16 @@ export default function JoyfulLightWebsite() {
        </div>
 
         <h1 className="text-3xl font-extrabold leading-tight text-white md:text-5xl">
-  MEET THE CEO
-</h1>
+        MEET THE CEO
+        </h1>
 
-<div className="mt-8">
-  <img
-    src="/CEO.png"
-    alt="CEO of Joyful-Light Scientific and Technology Limited"
-    className="h-64 w-64 rounded-3xl object-cover shadow-2xl"
-  />
-</div>
+      <div className="mt-8">
+       <img
+           src="/CEO.png"
+          alt="CEO of Joyful-Light Scientific and Technology Limited"
+    className="mt-6 h-[500px] w-full max-w-md rounded-3xl object-cover shadow-2xl" 
+        />
+      </div>
 
 <div className="mt-8 max-w-2xl">
   <h2 className="text-2xl font-bold text-yellow-300">About Me</h2>
