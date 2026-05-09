@@ -137,7 +137,7 @@ export default function JoyfulLightWebsite() {
           </div>
         )}
       </header>
-        <div className="animate-[marquee_15s_linear_infinite] whitespace-nowrap text-sm font-bold text-[#061d49]">
+       <div className="animate-[marquee_15s_linear_infinite] whitespace-nowrap text-sm font-bold text-[#061d49]">
             Development Ongoing, Please Check Back Later
         </div>
       <section id="home" className="relative overflow-hidden bg-[#061d49] pt-24">
