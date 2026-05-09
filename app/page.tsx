@@ -93,7 +93,7 @@ export default function JoyfulLightWebsite() {
   const [open, setOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(0);
 
-  const nav = ["Home", "About", "Services", "Projects", "Team", "FAQ", "Blog", "Contact"];
+  const nav = ["Home", "About", "Services", "Projects", "Team", "FAQ", "Blog", "Contact", "Payment"];
 
   return (
     <main className="min-h-screen bg-white font-sans text-slate-900">
@@ -109,7 +109,7 @@ export default function JoyfulLightWebsite() {
 
           <div className="hidden items-center gap-7 lg:flex">
             {nav.map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-semibold text-white/80 transition hover:text-yellow-300">
+              <a key={item} href={item === "Payment" ? "/payment" : `#${item.toLowerCase()}`} className="text-sm font-semibold text-white/80 transition hover:text-yellow-300">
                 {item}
               </a>
             ))}
