@@ -140,10 +140,9 @@ export default function JoyfulLightWebsite() {
         <div className="relative mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <div className="mb-6 w-full overflow-hidden py-2">
-  <div className="animate-[marquee_12s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
-    ⚠️ Development Ongoing, Please Check Back Later🥴🙂😠 ⚠️
-  </div>
-</div>
+        <div className="animate-[marquee_12s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
+                 ⚠️ Development Ongoing, Please Check Back Later ⚠️
+       </div>
        </div>
 
         <p className="mb-5 inline-flex rounded-full border border-yellow-300/40 bg-white/10 px-4 py-2 text-sm font-bold text-yellow-300 backdrop-blur">
