@@ -145,7 +145,7 @@ export default function JoyfulLightWebsite() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <div className="mb-6 w-full overflow-hidden py-2">
         <div className="animate-[marquee_12s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
-                 ⚠️ Please Note: Development Ongoing, Please Check Back Later 😠🥴🙂❌⚠️
+                 ⚠️ Please Note: This Website is undergoing Developemt, Please Check Back Later 😠🥴🙂❌⚠️
        </div>
        </div>
 
