@@ -100,11 +100,15 @@ export default function JoyfulLightWebsite() {
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#061d49]/95 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
           <a href="#home" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#0b63f6] text-xl font-black text-white shadow-lg shadow-blue-900/40"></div>
-            <div>
-              <p className="text-lg font-black text-white">JOYFUL-LIGHT</p>
-              <p className="text-xs font-medium text-yellow-300">SCIENTIFIC AND TECHNOLOGY LTD</p>
-            </div>
+           <div className="flex flex-col justify-center">
+  <p className="text-2xl font-black leading-none text-white">
+    JOYFUL-LIGHT
+  </p>
+
+  <p className="mt-1 text-sm font-semibold tracking-wide text-yellow-300">
+    SCIENTIFIC AND TECHNOLOGY LTD
+  </p>
+</div>
           </a>
           <div className="hidden items-center gap-7 lg:flex">
             {nav.map((item) => (
@@ -141,7 +145,7 @@ export default function JoyfulLightWebsite() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <div className="mb-6 w-full overflow-hidden py-2">
         <div className="animate-[marquee_12s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
-                 ⚠️ Please Note: Development Ongoing, Please Check Back Later ⚠️
+                 ⚠️ Please Note: Development Ongoing, Please Check Back Later 😠🥴🙂❌⚠️
        </div>
        </div>
 
