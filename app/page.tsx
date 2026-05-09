@@ -149,7 +149,7 @@ export default function JoyfulLightWebsite() {
 
         <p className="mb-5 inline-flex rounded-full border border-yellow-300/40 bg-white/10 px-4 py-2 text-sm font-bold text-yellow-300 backdrop-blur">
               IT Services • Data • Websites • CAC • Writing
-        </p>
+      </p>
         
             <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">
             Joyful-Light Scientific and Technology Limited helps businesses, entrepreneurs, and organizations build a strong digital presence, make data-driven decisions, complete business documentation, and access professional technology support.
