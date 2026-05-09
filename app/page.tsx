@@ -149,7 +149,7 @@ export default function JoyfulLightWebsite() {
        </div>
        </div>
 
-        <h1 className="text-3xl font-extrabold leading-tight text-white md:text-5xl">
+        <h1 className="text-3xl font-extrabold leading-tight text-white md:text-4xl">
         MEET THE CEO
         </h1>
 
