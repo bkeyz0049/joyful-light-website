@@ -253,18 +253,35 @@ export default function JoyfulLightWebsite() {
       </section>
 
       <section id="team" className="bg-white px-5 py-24 lg:px-8">
-        <SectionTitle label="Our Team" title="Professional Team" text="Add founder, directors, technical staff, writers, data analysts, and support officers here." />
+        <SectionTitle label="Our Team" title="Professional Team" text="Our Creative Team." />
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
           {["Managing Director", "Technology Lead", "Client Support"].map((role) => (
             <div key={role} className="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 text-center shadow-sm">
-             <img
-  src={
-    role === "Managing Director"
-      ? "/MD.png"
+            <div key={role} className="rounded-[2rem] border border-slate-100 bg-slate-50 p-8 text-center shadow-sm">
+  <img
+    src={
+      role === "Managing Director"
+        ? "/MD.png"
+        : role === "Technology Lead"
+        ? "/TL.png"
+        : "/CS.png"
+    }
+    alt={role}
+    className="mx-auto mb-5 h-28 w-28 rounded-full object-cover shadow-lg"
+  />
+
+  <h3 className="text-xl font-black text-[#061d49]">
+    {role === "Managing Director"
+      ? "Managing Director"
       : role === "Technology Lead"
-      ? "/TL.png"
-      : "/CS.png"
-  }
+      ? "Technology Lead"
+      : "Client Support"}
+  </h3>
+
+  <p className="mt-2 text-slate-500">
+    Team Member
+  </p>
+</div>
   alt={role}
   className="mx-auto mb-5 h-28 w-28 rounded-full object-cover shadow-lg"
 />
