@@ -149,7 +149,7 @@ export default function JoyfulLightWebsite() {
        </div>
        </div>
 
-        <h1 className="text-3xl font-extrabold leading-tight text-white md:text-4xl">
+        <h1 className="text-3xl font-extrabold leading-tight text-white md:text-2xl">
         MEET THE CEO
         </h1>
 
@@ -162,7 +162,7 @@ export default function JoyfulLightWebsite() {
       </div>
 
 <div className="mt-8 max-w-2xl">
-  <h2 className="text-2xl font-bold text-yellow-300">About Me</h2>
+  <h2 className="text-2xl font-bold text-yellow-300">Oladipo Busayo</h2>
 
   <p className="mt-4 text-base leading-7 text-white/80">
     I am the CEO of Joyful-Light Scientific and Technology Limited, a company committed to providing reliable IT services, data analysis, dashboard creation, website development, CAC registration support, and professional writing services.
