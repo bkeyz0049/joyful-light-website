@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { supabase } from "../../lib/supabase";
 declare global {
   interface Window {
     MonnifySDK?: any;
@@ -17,12 +17,26 @@ export default function PaymentPage() {
     amount: "50000",
   });
 
-  const payWithMonnify = () => {
+  const payWithMonnify = async () => {
     if (!window.MonnifySDK) {
       alert("Monnify SDK not loaded yet.");
       return;
     }
+const { error } = await supabase.from("customers").insert({
+  full_name: form.name,
+  email: form.email,
+  phone: form.phone,
+  service: form.service,
+  amount: Number(form.amount),
+  payment_reference: `JL-${Date.now()}`,
+  payment_status: "pending",
+});
 
+if (error) {
+  alert("Could not save customer details.");
+  console.error(error);
+  return;
+}
     window.MonnifySDK.initialize({
       amount: Number(form.amount),
       currency: "NGN",
