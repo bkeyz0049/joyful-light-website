@@ -1,8 +1,6 @@
 "use client";
-
 import { useMemo, useState } from "react";
-import { supabase } from "../../../lib/supabase";
-
+import { supabase } from "@/lib/supabase";
 type ServiceType =
   | "Business Name Registration"
   | "Limited Liability Company Registration"
