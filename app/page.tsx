@@ -127,7 +127,50 @@ export default function JoyfulLightWebsite() {
             {open ? <X /> : <Menu />}
           </button>
         </nav>
+        {open && (
+  <div className="bg-[#061d49] px-6 py-5 lg:hidden">
+    <div className="flex flex-col gap-5">
+      <a href="#home" className="text-white font-bold">
+        Home
+      </a>
 
+      <a href="#about" className="text-white font-bold">
+        About
+      </a>
+
+      <a href="#services" className="text-white font-bold">
+        Services
+      </a>
+
+      <a href="#projects" className="text-white font-bold">
+        Projects
+      </a>
+
+      <a href="#team" className="text-white font-bold">
+        Team
+      </a>
+
+      <a href="#faq" className="text-white font-bold">
+        FAQ
+      </a>
+
+      <a href="#blog" className="text-white font-bold">
+        Blog
+      </a>
+
+      <a href="#contact" className="text-white font-bold">
+        Contact
+      </a>
+
+      <a
+        href="/services/cac-registration"
+        className="rounded-full bg-yellow-400 px-5 py-3 text-center font-black text-[#061d49]"
+      >
+        CAC Registration
+      </a>
+    </div>
+  </div>
+)}
         {open && (
           <div className="border-t border-white/10 bg-[#061d49] px-5 py-5 lg:hidden">
             <div className="grid gap-4">
@@ -363,6 +406,13 @@ export default function JoyfulLightWebsite() {
 
       <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
         <a href={`tel:${company.phone}`} className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-400 text-[#061d49] shadow-xl"><Phone /></a>
+        <a
+        href="https://joyful-light-website-one.vercel.app/payment"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl"
+          title="Log Payment Issues for Quick Ressolution"
+>
+  <FileText />
+</a>
         <a href={`https://wa.me/${company.whatsapp}`} className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-xl"><MessageCircle /></a>
       </div>
     </main>
