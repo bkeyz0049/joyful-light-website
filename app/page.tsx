@@ -362,22 +362,35 @@ export default function JoyfulLightWebsite() {
         </div>
       </footer>
 
-      <div className="fixed bottom-5 right-5 z-[9999] flex flex-col gap-3">
-        <a href={`tel:${company.phone}`} className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-400 text-[#061d49] shadow-xl">
-          <Phone /></a>
-         <button
-  type="button"
-  onClick={() => {
-    window.location.href = "/payment";
-  }}
-  className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl"
-  title="Log Payment Issues for Quick Resolution"
-  aria-label="Log Payment Issues"
->
-  <FileText />
-</button>
-      <a href={`https://wa.me/${company.whatsapp}`} className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-xl"><MessageCircle /></a>
-      </div>
+      {!open && (
+  <div className="fixed bottom-5 right-5 z-[99999] flex flex-col gap-3">
+    <a
+      href={`tel:${company.phone}`}
+      className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow-400 text-[#061d49] shadow-xl"
+      aria-label="Call Joyful-Light"
+    >
+      <Phone />
+    </a>
+
+    <a
+      href="/payment"
+      className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl"
+      aria-label="Log Payment Issues"
+    >
+      <FileText />
+    </a>
+
+    <a
+      href={`https://wa.me/${company.whatsapp}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-xl"
+      aria-label="Chat on WhatsApp"
+    >
+      <MessageCircle />
+    </a>
+  </div>
+)}
     </main>
   );
 }
