@@ -12,7 +12,43 @@ const company = {
   whatsapp: "2348160230048",
   email: "joyfulllightscifitech@gmail.com",
 };
+<div className="mt-12 grid gap-6 md:grid-cols-2">
+  <a
+    href="/payment"
+    className="rounded-[2rem] bg-white p-8 shadow-xl transition hover:-translate-y-1"
+  >
+    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white">
+      <FileText className="h-8 w-8" />
+    </div>
 
+    <h3 className="text-2xl font-black text-[#061d49]">
+      Click to Log Issues
+    </h3>
+
+    <p className="mt-4 leading-7 text-slate-600">
+      Report payment problems, failed transactions, debit issues,
+      or upload receipts/screenshots for quick resolution.
+    </p>
+  </a>
+
+  <a
+    href="/support"
+    className="rounded-[2rem] bg-white p-8 shadow-xl transition hover:-translate-y-1"
+  >
+    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-400 text-[#061d49]">
+      <MessageCircle className="h-8 w-8" />
+    </div>
+
+    <h3 className="text-2xl font-black text-[#061d49]">
+      Other Issues & Complaints
+    </h3>
+
+    <p className="mt-4 leading-7 text-slate-600">
+      Log complaints, service issues, delays, customer support concerns,
+      or any other business-related problem.
+    </p>
+  </a>
+</div>
 const services = [
   {
     title: "IT Services",
@@ -372,13 +408,7 @@ export default function JoyfulLightWebsite() {
       <Phone />
     </a>
 
-    <a
-      href="/payment"
-      className="flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-xl"
-      aria-label="Log Payment Issues"
-    >
-      <FileText />
-    </a>
+    
 
     <a
       href={`https://wa.me/${company.whatsapp}`}
