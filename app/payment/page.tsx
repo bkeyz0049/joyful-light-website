@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
 declare global {
   interface Window {
@@ -22,6 +22,20 @@ export default function PaymentPage() {
       alert("Monnify SDK not loaded yet.");
       return;
     }
+    useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+
+  const service = params.get("service");
+  const amount = params.get("amount");
+
+  if (service || amount) {
+    setForm((current) => ({
+      ...current,
+      service: service || current.service,
+      amount: amount || current.amount,
+    }));
+  }
+}, []);
 const { error } = await supabase.from("customers").insert({
   full_name: form.name,
   email: form.email,

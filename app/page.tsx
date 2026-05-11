@@ -1,4 +1,5 @@
 "use client"; 
+import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Phone, Mail, MapPin, MessageCircle, BarChart3, Globe2, FileText, Building2, PenTool, ChevronDown } from "lucide-react";
@@ -228,13 +229,21 @@ export default function JoyfulLightWebsite() {
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <div key={service.title} className="rounded-[2rem] bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <Link
+  key={service.title}
+  href={
+    service.title === "CAC Registrations"
+      ? "/services/cac-registration"
+      : "#"
+  }
+  className="block rounded-[2rem] bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+>
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0b63f6] text-white">
                   <Icon />
                 </div>
                 <h3 className="text-2xl font-black text-slate-950">{service.title}</h3>
                 <p className="mt-4 leading-7 text-slate-600">{service.text}</p>
-              </div>
+              </Link>
             );
           })}
         </div>
