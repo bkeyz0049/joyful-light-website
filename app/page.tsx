@@ -105,7 +105,7 @@ useEffect(() => {
   const nav = ["Home", "About Us", "Our Services", "Projects", "Our Team", "FAQ", "Blog", "Contact Us", "Seek Support"];
 
   return (
-    <main className="min-h-screen bg-white font-sans text-slate-900">
+    <main className="min-h-screen w-full overflow-x-hidden bg-white font-sans text-slate-900">
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#061d49]/95 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
           <a href="#home" className="flex items-center gap-2">
@@ -159,10 +159,10 @@ useEffect(() => {
           </div>
         )}
       </header>
-      <section id="home" className="relative overflow-hidden bg-[#061d49] pt-24">
+      <section id="home" className="relative w-full overflow-x-hidden bg-[#061d49] pt-24">
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#0b63f6_0%,transparent_34%),radial-gradient(circle_at_bottom_left,#ffd84d_0%,transparent_22%)] opacity-70" />
 
-  <div className="relative mx-auto grid min-h-screen max-w-7xl items-start gap-10 px-4 py-10 lg:min-h-[720px] lg:grid-cols-2 lg:items-center lg:px-8 lg:py-20">
+  <div className="relative mx-auto grid w-full max-w-7xl items-start gap-8 px-4 py-8 lg:min-h-[720px] lg:grid-cols-2 lg:items-center lg:px-8 lg:py-20">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
