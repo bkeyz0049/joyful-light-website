@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Joyful-Light LTD",
   description: "We get it Done",
+  icons: {
+  icon: "/logo1.png",
+},
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 "use client"; 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react"; 
 import { motion } from "framer-motion";
 import { Menu, X, Phone, Mail, MapPin, MessageCircle, BarChart3, Globe2, FileText, Building2, PenTool, ChevronDown } from "lucide-react";
 
@@ -12,43 +12,6 @@ const company = {
   whatsapp: "2348160230048",
   email: "joyfulllightscifitech@gmail.com",
 };
-<div className="mt-12 grid gap-6 md:grid-cols-2">
-  <a
-    href="/payment"
-    className="rounded-[2rem] bg-white p-8 shadow-xl transition hover:-translate-y-1"
-  >
-    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-white">
-      <FileText className="h-8 w-8" />
-    </div>
-
-    <h3 className="text-2xl font-black text-[#061d49]">
-      Click to Log Issues
-    </h3>
-
-    <p className="mt-4 leading-7 text-slate-600">
-      Report payment problems, failed transactions, debit issues,
-      or upload receipts/screenshots for quick resolution.
-    </p>
-  </a>
-
-  <a
-    href="/support"
-    className="rounded-[2rem] bg-white p-8 shadow-xl transition hover:-translate-y-1"
-  >
-    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-400 text-[#061d49]">
-      <MessageCircle className="h-8 w-8" />
-    </div>
-
-    <h3 className="text-2xl font-black text-[#061d49]">
-      Other Issues & Complaints
-    </h3>
-
-    <p className="mt-4 leading-7 text-slate-600">
-      Log complaints, service issues, delays, customer support concerns,
-      or any other business-related problem.
-    </p>
-  </a>
-</div>
 const services = [
   {
     title: "IT Services",
@@ -128,25 +91,44 @@ function SectionTitle({
 
 export default function JoyfulLightWebsite() {
   const [open, setOpen] = useState(false);
+  const [showCertificate, setShowCertificate] = useState(true);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setShowCertificate((current) => !current);
+  }, 4000);
+
+  return () => clearInterval(interval);
+}, []);
   const [activeFaq, setActiveFaq] = useState(0);
 
-  const nav = ["Home", "About", "Services", "Projects", "Team", "FAQ", "Blog", "Contact", "Payment"];
+  const nav = ["Home", "About Us", "Our Services", "Projects", "Our Team", "FAQ", "Blog", "Contact Us", "Seek Support"];
 
   return (
     <main className="min-h-screen bg-white font-sans text-slate-900">
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#061d49]/95 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-          <a href="#home" className="flex items-center gap-3">
-           <div className="flex flex-col justify-center">
-  <p className="text-2xl font-black leading-none text-white">
-    JOYFUL-LIGHT
-  </p>
+          <a href="#home" className="flex items-center gap-2">
+<div className="flex flex-col items-center">
+  <img
+    src="/logo1.png"
+    alt="Joyful-Light Logo"
+    className="h-14 w-14 object-contain sm:h-20 sm:w-20"
+  />
 
-  <p className="mt-1 text-sm font-semibold tracking-wide text-yellow-300">
-    SCIENTIFIC AND TECH LTD
+  <p className="-mt-1 text-[10px] font-semibold text-white/70">
+    RC: 8554718
   </p>
 </div>
-          </a>
+
+  <div>
+    <p className="text-lg font-black text-white">JOYFUL-LIGHT</p>
+    <p className="-ml-3 text-xs font-bold text-yellow-300">
+      SCIENTIFIC AND TECH LTD.
+    </p>
+    
+  </div>
+</a>
           <div className="hidden items-center gap-7 lg:flex">
             {nav.map((item) => (
               <a key={item} href={item === "Payment" ? "/payment" : `#${item.toLowerCase()}`} className="text-sm font-semibold text-white/80 transition hover:text-yellow-300">
@@ -178,67 +160,142 @@ export default function JoyfulLightWebsite() {
         )}
       </header>
       <section id="home" className="relative overflow-hidden bg-[#061d49] pt-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#0b63f6_0%,transparent_34%),radial-gradient(circle_at_bottom_left,#ffd84d_0%,transparent_22%)] opacity-70" />
-        <div className="relative mx-auto grid min-h-[720px] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-        <div className="mb-6 w-full overflow-hidden py-2">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#0b63f6_0%,transparent_34%),radial-gradient(circle_at_bottom_left,#ffd84d_0%,transparent_22%)] opacity-70" />
+
+  <div className="relative mx-auto grid min-h-screen max-w-7xl items-start gap-10 px-4 py-10 lg:min-h-[720px] lg:grid-cols-2 lg:items-center lg:px-8 lg:py-20">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      <div className="mb-6 w-full overflow-hidden py-2">
         <div className="animate-[marquee_25s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
-                 ⚠️ Please Note: This Website is undergoing Developemt, Please Check Back Later 😠🥴🙂❌⚠️
-       </div>
-       </div>
+          ⚠️ Please Note: This Website is undergoing Development, Please Check Back Later🥴🥴
+        </div>
+      </div>
 
-        <h1 className="text-3xl font-extrabold leading-tight text-white md:text-2xl">
-            MEET THE CEO
-        </h1>
+      <h1 className="text-2xl font-extrabold leading-tight text-white md:text-3xl">
+        MEET OUR CEO
+      </h1>
 
-      <div className="mt-8">
-       <img
-           src="/CEO.png"
+      <div className="mt-10">
+        <img
+          src="/CEO.png"
           alt="CEO of Joyful-Light Scientific and Technology Limited"
-    className="mt-6 h-[500px] w-full max-w-md rounded-3xl object-cover shadow-2xl" 
+          className="mt-4 h-[320px] w-full max-w-sm rounded-3xl object-cover shadow-2xl sm:h-[420px] lg:h-[500px]"
         />
       </div>
 
-<div className="mt-8 max-w-2xl">
-  <h2 className="text-2xl font-bold text-yellow-300">Oladipo Busayo</h2>
+      <div className="mt-8 max-w-2xl">
+        <h2 className="text-2xl font-bold text-yellow-300">
+          Oladipo Busayo
+        </h2>
 
-  <p className="mt-4 text-base leading-7 text-white/80">
-    I am the CEO of Joyful-Light Scientific and Technology Limited, a company committed to providing reliable IT services, data analysis, dashboard creation, website development, CAC registration support, and professional writing services.
-  </p>
+        <p className="mt-4 text-base leading-7 text-white/80">
+          I am the CEO of Joyful-Light Scientific and Technology Limited, a company committed to providing reliable IT services, data analysis, dashboard creation, website development, CAC registration support, and professional writing services.
+        </p>
 
-  <p className="mt-4 text-base leading-7 text-white/80">
-    My vision is to help businesses, entrepreneurs, and organizations use technology, data, and professional documentation to grow, improve operations, and build a stronger digital presence.
-  </p>
-</div>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
-              {company.name} provides professional IT services, dashboard creation, website development, CAC registration support, and writing services from {company.location}.
-            </p>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <a href="#contact" className="rounded-full bg-yellow-400 px-8 py-4 text-center font-black text-[#061d49] shadow-xl shadow-yellow-900/20 transition hover:-translate-y-1">
-                Request a Service
-              </a>
-              <a href="#services" className="rounded-full border border-white/25 px-8 py-4 text-center font-black text-white transition hover:bg-white hover:text-[#061d49]">
-                Explore Services
-              </a>
+        <p className="mt-4 text-base leading-7 text-white/80">
+          My vision is to help businesses, entrepreneurs, and organizations use technology, data, and professional documentation to grow, improve operations, and build a stronger digital presence.
+        </p>
+      </div>
+
+      <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
+        {company.name} provides professional IT services, dashboard creation, website development, CAC registration support, and writing services from {company.location}.
+      </p>
+
+      <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+        <a
+          href="#contact"
+          className="rounded-full bg-yellow-400 px-8 py-4 text-center font-black text-[#061d49] shadow-xl shadow-yellow-900/20 transition hover:-translate-y-1"
+        >
+          Request a Service
+        </a>
+
+        <a
+          href="#services"
+          className="rounded-full border border-white/25 px-8 py-4 text-center font-black text-white transition hover:bg-white hover:text-[#061d49]"
+        >
+          Explore Services
+        </a>
+      </div>
+    </motion.div>
+
+    <motion.div
+      initial={{ opacity: 0, scale: 0.92 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, delay: 0.15 }}
+      className="relative mt-4 lg:-mt-[28rem]"
+    >
+
+        <div className="rounded-[1.5rem] bg-[#0b63f6] p-6 text-white">
+         <motion.div
+            key={showCertificate ? "certificate" : "legal"}
+               initial={{
+    opacity: 0,
+    y: 40,
+    scale: 0.92,
+  }}
+  animate={{
+    opacity: 1,
+    y: 0,
+    scale: 1,
+  }}
+ exit={{
+  opacity: 0,
+  rotate: -12,
+  scale: 0.3,
+  x: -120,
+  y: 120,
+}}
+ transition={{
+  duration: 1.8,
+  type: "spring",
+  stiffness: 80,
+  damping: 8,
+}}
+  >
+  {showCertificate ? (
+            <div>
+              <p className="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
+                Evidence of Registration  
+              </p>
+
+              <img
+                src="/joyfulcac.png"
+                alt="Joyful-Light CAC Certificate"
+                className="h-[280px] w-full rounded-2xl bg-white object-contain p-3 sm:h-[360px] lg:h-[420px]"
+              />
             </div>
-          </motion.div>
+          ) : (
+            <div className="flex min-h-[420px] flex-col justify-center rounded-2xl bg-white/10 p-6 text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
+                Legal Entity Status
+              </p>
 
-          <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.15 }} className="relative">
-            <div className="rounded-[2rem] bg-white p-5 shadow-2xl shadow-black/30">
-              <div className="rounded-[1.5rem] bg-[#0b63f6] p-7 text-white">
-                <p className="mb-6 text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">Company Snapshot</p>
-                <div className="grid gap-4">
-                  {services.slice(0, 5).map((service) => (
-                    <div key={service.title} className="rounded-2xl bg-white/10 p-4 backdrop-blur">
-                      <p className="font-bold">{service.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <h2 className="mt-5 text-3xl font-black leading-tight text-white">
+                Registered Legal Entity in Nigeria
+              </h2>
+
+              <p className="mt-5 leading-8 text-white/85">
+                Joyful-Light Scientific and Technology Limited is registered as a legal entity under the Corporate Affairs Commission (CAC) in Nigeria.
+              </p>
+
+              <p className="mt-5 leading-8 text-white/85">
+                This is supported by the Companies and Allied Matters Act, 2020 (CAMA 2020), which provides the legal framework for the incorporation of companies, registration of business names, and incorporation of trustees in Nigeria.
+              </p>
+
+              <p className="mt-5 text-sm font-bold text-yellow-300">
+                RC: 8554718
+              </p>
             </div>
+          )}
           </motion.div>
         </div>
-      </section>
+      
+    </motion.div>
+  </div>
+</section>
 
       <section id="about" className="bg-white px-5 py-24 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
@@ -256,6 +313,7 @@ export default function JoyfulLightWebsite() {
                 <p className="text-xl font-black text-[#061d49]">{item}</p>
               </div>
             ))}
+            
           </div>
         </div>
       </section>
@@ -283,6 +341,7 @@ export default function JoyfulLightWebsite() {
               </Link>
             );
           })}
+          
         </div>
       </section>
 
@@ -295,6 +354,7 @@ export default function JoyfulLightWebsite() {
               <h3 className="mt-8 text-2xl font-black">{project}</h3>
             </div>
           ))}
+          
         </div>
       </section>
 
@@ -374,6 +434,43 @@ export default function JoyfulLightWebsite() {
               <p className="flex items-center gap-3"><MapPin /> {company.location}</p>
               <p className="flex items-center gap-3"><Phone /> {company.phone}</p>
               <p className="flex items-center gap-3"><Mail /> {company.email}</p>
+              <div className="mt-10 grid gap-5 md:grid-cols-2">
+  <a
+    href="/payment"
+    className="rounded-[2rem] bg-white p-6 shadow-xl transition hover:-translate-y-1"
+  >
+    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-red-600 text-white">
+      <FileText />
+    </div>
+
+    <h3 className="text-xl font-black text-[#061d49]">
+      Click to Log Issues
+    </h3>
+
+    <p className="mt-3 leading-7 text-slate-600">
+      Report payment issues, failed transactions, debit problems, or upload
+      your receipt/screenshot for quick review.
+    </p>
+  </a>
+
+  <a
+    href="/support"
+    className="rounded-[2rem] bg-white p-6 shadow-xl transition hover:-translate-y-1"
+  >
+    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-400 text-[#061d49]">
+      <MessageCircle />
+    </div>
+
+    <h3 className="text-xl font-black text-[#061d49]">
+      Other Issues
+    </h3>
+
+    <p className="mt-3 leading-7 text-slate-600">
+      Log complaints, service issues, delays, support concerns, or other
+      business-related issues.
+    </p>
+  </a>
+</div>
             </div>
           </div>
 
