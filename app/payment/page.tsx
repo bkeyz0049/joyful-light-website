@@ -1,151 +1,250 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
-declare global {
-  interface Window {
-    MonnifySDK?: any;
-  }
-}
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
-export default function PaymentPage() {
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+const paymentOptions = [
+  "Bank Transfer",
+  "Card Payment",
+  "USSD",
+  "POS",
+  "Mobile Banking App",
+  "Internet Banking",
+  "Other",
+];
+
+export default function PaymentIssuePage() {
+  const [loading, setLoading] = useState(false);
+  const [receiptFile, setReceiptFile] = useState<File | null>(null);
+
   const [form, setForm] = useState({
-    name: "",
-    email: "",
+    customer_name: "",
+    means_of_payment: "",
+    bank_name: "",
+    account_number: "",
     phone: "",
-    service: "Website Creation",
-    amount: "50000",
+    description: "",
   });
 
-  const payWithMonnify = async () => {
-    if (!window.MonnifySDK) {
-      alert("Monnify SDK not loaded yet.");
+  const updateForm = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    const allowedTypes = [
+      "application/pdf",
+      "image/jpg",
+      "image/jpeg",
+      "image/png",
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only PDF, JPG, JPEG, and PNG files are allowed.");
+      e.target.value = "";
       return;
     }
-    useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
 
-  const service = params.get("service");
-  const amount = params.get("amount");
+    if (file.size > MAX_FILE_SIZE) {
+      alert("File must not be more than 5MB.");
+      e.target.value = "";
+      return;
+    }
 
-  if (service || amount) {
-    setForm((current) => ({
-      ...current,
-      service: service || current.service,
-      amount: amount || current.amount,
-    }));
-  }
-}, []);
-const { error } = await supabase.from("customers").insert({
-  full_name: form.name,
-  email: form.email,
-  phone: form.phone,
-  service: form.service,
-  amount: Number(form.amount),
-  payment_reference: `JL-${Date.now()}`,
-  payment_status: "pending",
-});
+    setReceiptFile(file);
+  };
 
-if (error) {
-  alert("Could not save customer details.");
-  console.error(error);
-  return;
-}
-    window.MonnifySDK.initialize({
-      amount: Number(form.amount),
-      currency: "NGN",
-      reference: `JL-${Date.now()}`,
-      customerFullName: form.name,
-      customerEmail: form.email,
-      customerMobileNumber: form.phone,
-      apiKey: process.env.NEXT_PUBLIC_MONNIFY_API_KEY,
-      contractCode: process.env.NEXT_PUBLIC_MONNIFY_CONTRACT_CODE,
-      paymentDescription: `${form.service} Payment`,
-      metadata: {
-        service: form.service,
-      },
+  const submitIssue = async () => {
+    if (
+      !form.customer_name ||
+      !form.means_of_payment ||
+      !form.bank_name ||
+      !form.account_number ||
+      !form.phone ||
+      !form.description
+    ) {
+      alert("Please fill all required fields.");
+      return;
+    }
 
-      onComplete: function (response: any) {
-        console.log(response);
-        alert("Payment successful!");
-      },
+    if (!/^\d{10,11}$/.test(form.account_number)) {
+      alert("Please enter a valid account number.");
+      return;
+    }
 
-      onClose: function () {
-        console.log("Payment window closed");
-      },
+    if (!/^\d{11}$/.test(form.phone)) {
+      alert("Phone number must be exactly 11 digits.");
+      return;
+    }
+
+    if (!receiptFile) {
+      alert("Please upload payment receipt or screenshot.");
+      return;
+    }
+
+    setLoading(true);
+
+    const fileExt = receiptFile.name.split(".").pop();
+    const fileName = `payment-issue-${Date.now()}.${fileExt}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("payment-issues")
+      .upload(fileName, receiptFile);
+
+    if (uploadError) {
+      setLoading(false);
+      console.error(uploadError);
+      alert("Could not upload receipt. Please try again.");
+      return;
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from("payment-issues")
+      .getPublicUrl(fileName);
+
+    const { error } = await supabase.from("payment_issues").insert({
+      ...form,
+      receipt_url: publicUrlData.publicUrl,
+      status: "pending_review",
     });
+
+    setLoading(false);
+
+    if (error) {
+      console.error(error);
+      alert("Could not submit payment issue.");
+      return;
+    }
+
+    alert("Your payment issue has been submitted successfully.");
+
+    setForm({
+      customer_name: "",
+      means_of_payment: "",
+      bank_name: "",
+      account_number: "",
+      phone: "",
+      description: "",
+    });
+
+    setReceiptFile(null);
   };
 
   return (
-    <main className="min-h-screen bg-[#061d49] px-5 py-20 text-white">
-      <div className="mx-auto max-w-xl rounded-3xl bg-white p-8 text-slate-900 shadow-2xl">
-        <h1 className="text-3xl font-bold">
-          Pay for a Service
+    <main className="min-h-screen bg-[#061d49] px-5 py-16 text-slate-900">
+      <section className="mx-auto max-w-3xl rounded-[2rem] bg-white p-8 shadow-2xl">
+        <h1 className="text-3xl font-black text-[#061d49]">
+          Payment Issues
         </h1>
 
-        <p className="mt-2 text-slate-600">
-          Secure payment powered by Monnify.
+        <p className="mt-3 leading-7 text-slate-600">
+          Lodge a complaint if you experienced payment issues. Please provide
+          accurate payment details and upload a receipt or screenshot.
         </p>
 
-        <div className="mt-8 grid gap-4">
+        <div className="mt-8 grid gap-5">
           <input
-            className="rounded-xl border px-4 py-3"
-            placeholder="Full Name"
-            value={form.name}
-            onChange={(e) =>
-              setForm({ ...form, name: e.target.value })
-            }
-          />
-
-          <input
-            className="rounded-xl border px-4 py-3"
-            placeholder="Email Address"
-            value={form.email}
-            onChange={(e) =>
-              setForm({ ...form, email: e.target.value })
-            }
-          />
-
-          <input
-            className="rounded-xl border px-4 py-3"
-            placeholder="Phone Number"
-            value={form.phone}
-            onChange={(e) =>
-              setForm({ ...form, phone: e.target.value })
-            }
+            name="customer_name"
+            value={form.customer_name}
+            onChange={updateForm}
+            placeholder="Full Name of Customer as on Account"
+            className="rounded-xl border px-4 py-3 outline-none focus:border-[#0b63f6]"
           />
 
           <select
-            className="rounded-xl border px-4 py-3"
-            value={form.service}
-            onChange={(e) =>
-              setForm({ ...form, service: e.target.value })
-            }
+            name="means_of_payment"
+            value={form.means_of_payment}
+            onChange={updateForm}
+            className="rounded-xl border px-4 py-3 outline-none focus:border-[#0b63f6]"
           >
-            <option>Website Creation</option>
-            <option>Data Analysis & Dashboard Creation</option>
-            <option>IT Services</option>
-            <option>CAC Registration</option>
-            <option>Writing Services</option>
+            <option value="">Select Means of Payment</option>
+            {paymentOptions.map((option) => (
+              <option key={option}>{option}</option>
+            ))}
           </select>
 
           <input
-            className="rounded-xl border px-4 py-3"
-            placeholder="Amount"
-            value={form.amount}
-            onChange={(e) =>
-              setForm({ ...form, amount: e.target.value })
-            }
+            name="bank_name"
+            value={form.bank_name}
+            onChange={updateForm}
+            placeholder="Bank Name"
+            className="rounded-xl border px-4 py-3 outline-none focus:border-[#0b63f6]"
           />
 
+          <input
+            name="account_number"
+            value={form.account_number}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              if (value.length <= 11) {
+                setForm({ ...form, account_number: value });
+              }
+            }}
+            placeholder="Account Number of Account Debited"
+            className="rounded-xl border px-4 py-3 outline-none focus:border-[#0b63f6]"
+          />
+
+          <input
+            name="phone"
+            value={form.phone}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              if (value.length <= 11) {
+                setForm({ ...form, phone: value });
+              }
+            }}
+            placeholder="Phone Number"
+            className="rounded-xl border px-4 py-3 outline-none focus:border-[#0b63f6]"
+          />
+
+          <textarea
+            name="description"
+            value={form.description}
+            onChange={updateForm}
+            placeholder="Describe the payment issue"
+            className="min-h-32 rounded-xl border px-4 py-3 outline-none focus:border-[#0b63f6]"
+          />
+
+          <div className="rounded-xl border border-dashed p-5">
+            <label className="font-bold text-[#061d49]">
+              Upload Receipt/Screenshot
+            </label>
+
+            <input
+              type="file"
+              accept=".pdf,.jpg,.jpeg,.png"
+              onChange={handleFile}
+              className="mt-3 block w-full"
+            />
+
+            <p className="mt-2 text-sm text-slate-500">
+              Accepted files: PDF, JPG, JPEG, PNG. Maximum file size: 5MB.
+            </p>
+
+            {receiptFile && (
+              <p className="mt-2 text-sm font-bold text-green-600">
+                Selected: {receiptFile.name}
+              </p>
+            )}
+          </div>
+
           <button
-            onClick={payWithMonnify}
-            className="rounded-full bg-yellow-400 px-6 py-4 font-bold text-[#061d49]"
+            type="button"
+            onClick={submitIssue}
+            disabled={loading}
+            className="rounded-full bg-yellow-400 px-8 py-4 font-black text-[#061d49] transition hover:bg-yellow-300 disabled:opacity-60"
           >
-            Pay Now
+            {loading ? "Submitting..." : "Submit Payment Issue"}
           </button>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

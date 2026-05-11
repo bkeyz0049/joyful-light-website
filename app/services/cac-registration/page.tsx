@@ -1,5 +1,6 @@
-"use client";
+"use client"
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 type ServiceType =
   | "Business Name Registration"
@@ -255,7 +256,14 @@ const validateIncorporatedTrustees = () => {
    <p className="mb-3 text-lg font-black uppercase tracking-[0.2em] text-yellow-300 md:text-2xl">
       JOYFUL-LIGHT SCIENTIFIC AND TECHNOLOGY LIMITED
     </p>
-
+<div className="absolute left-6 top-6 z-50">
+  <Link
+    href="/"
+    className="inline-flex items-center rounded-full bg-white px-5 py-2 text-sm font-bold text-[#061d49] shadow-lg transition hover:bg-yellow-400"
+  >
+    ← Back to Home
+  </Link>
+</div>
     <h1 className="text-2xl font-black leading-tight md:text-4xl">
       CAC & Compliance Registration Services
     </h1>
