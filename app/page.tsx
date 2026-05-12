@@ -8,7 +8,9 @@ const company = {
   name: "Joyful-Light Scientific and Technology Limited",
   shortName: "Joyful-Light",
   location: "Nigeria",
-  email: "fulllightscifitech@gmail.com",
+  phone: "+2348160230048",
+  whatsapp: "2348160230048",
+  email: "joyfulllightscifitech@gmail.com",
 };
 const services = [
   {
@@ -160,59 +162,59 @@ useEffect(() => {
       <section id="home" className="relative w-full overflow-x-hidden bg-[#061d49] pt-24">
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#0b63f6_0%,transparent_34%),radial-gradient(circle_at_bottom_left,#ffd84d_0%,transparent_22%)] opacity-70" />
 
-  <div className="relative mx-auto grid w-full max-w-7xl items-start gap-8 px-4 py-8 lg:min-h-[720px] lg:grid-cols-2 lg:items-center lg:px-8 lg:py-20">
+  <div className="relative mx-auto grid w-full max-w-full items-start gap-8 overflow-hidden px-5 py-8 lg:max-w-7xl lg:grid-cols-2 lg:px-8 lg:py-20">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
     >
       <div className="mb-6 w-full overflow-hidden py-2">
-        <div className="animate-[marquee_25s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
+        <div className="animate-[marquee_32s_linear_infinite] whitespace-nowrap text-sm font-bold text-red-500">
           ⚠️ Please Note: This Website is undergoing Development, Please Check Back Later🥴🥴
         </div>
       </div>
 
-      <h1 className="text-2xl font-extrabold leading-tight text-white md:text-3xl">
-        MEET OUR CEO
-      </h1>
+     <div className="mt-8">
+  <h1 className="mb-6 text-center text-3xl font-extrabold leading-tight text-white md:text-left md:text-2xl">
+    MEET OUR CEO
+  </h1>
 
-      <div className="mt-10">
-        <img
-          src="/CEO.png"
-          alt="CEO of Joyful-Light Scientific and Technology Limited"
-          className="mt-4 h-[320px] w-full max-w-sm rounded-3xl object-cover shadow-2xl sm:h-[420px] lg:h-[500px]"
-        />
-      </div>
+  <img
+    src="/CEO.png"
+    alt="CEO of Joyful-Light Scientific and Technology Limited"
+    className="mt-4 h-[320px] w-full max-w-full rounded-3xl object-cover shadow-2xl sm:h-[420px] lg:h-[500px] lg:max-w-md"
+  />
+</div>
 
-      <div className="mt-8 max-w-2xl">
+      <div className="mt-8 w-full max-w-full overflow-hidden">
         <h2 className="text-2xl font-bold text-yellow-300">
           Oladipo Busayo
         </h2>
 
-        <p className="mt-4 text-base leading-7 text-white/80">
+        <p className="mt-4 text-justify text-base leading-8 text-white/80">
           I am the CEO of Joyful-Light Scientific and Technology Limited, a company committed to providing reliable IT services, data analysis, dashboard creation, website development, CAC registration support, and professional writing services.
         </p>
 
-        <p className="mt-4 text-base leading-7 text-white/80">
+       <p className="mt-4 text-justify text-base leading-8 text-white/80">
           My vision is to help businesses, entrepreneurs, and organizations use technology, data, and professional documentation to grow, improve operations, and build a stronger digital presence.
         </p>
       </div>
 
-      <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
+    <p className="mt-6 w-full max-w-full break-words text-justify text-base leading-8 text-white/80">
         {company.name} provides professional IT services, dashboard creation, website development, CAC registration support, and writing services from {company.location}.
       </p>
 
-      <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-9 flex w-full flex-col gap-4 overflow-hidden sm:flex-row">
         <a
           href="#contact"
-          className="rounded-full bg-yellow-400 px-8 py-4 text-center font-black text-[#061d49] shadow-xl shadow-yellow-900/20 transition hover:-translate-y-1"
+          className="w-full rounded-full bg-yellow-400 px-8 py-4 text-center font-black text-[#061d49] shadow-xl shadow-yellow-900/20 transition hover:-translate-y-1"
         >
           Request a Service
         </a>
 
         <a
           href="#services"
-          className="rounded-full border border-white/25 px-8 py-4 text-center font-black text-white transition hover:bg-white hover:text-[#061d49]"
+          className="w-full rounded-full border border-white/25 px-8 py-4 text-center font-black text-white transition hover:bg-white hover:text-[#061d49]"
         >
           Explore Services
         </a>
@@ -223,10 +225,10 @@ useEffect(() => {
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.7, delay: 0.15 }}
-    className="relative mt-10 lg:-mt-40"
+        className="relative mt-38 w-full max-w-full overflow-hidden lg:mt-30"
     >
 
-        <div className="rounded-[1.5rem] bg-[#0b63f6] p-6 text-white">
+        <div className="mx-auto w-full max-w-full overflow-hidden rounded-[1.5rem] bg-[#0b63f6] p-4 text-white sm:p-6">
          <motion.div
             key={showCertificate ? "certificate" : "legal"}
                initial={{
@@ -266,20 +268,20 @@ useEffect(() => {
               />
             </div>
           ) : (
-            <div className="flex min-h-[420px] flex-col justify-center rounded-2xl bg-white/10 p-6 text-center">
+            <div className="flex min-h-[300px] w-full max-w-full flex-col justify-center overflow-hidden rounded-2xl bg-white/10 p-4 text-center sm:min-h-[420px] sm:p-6">
               <p className="text-sm font-bold uppercase tracking-[0.25em] text-yellow-300">
                 Legal Entity Status
               </p>
 
-              <h2 className="mt-5 text-3xl font-black leading-tight text-white">
+              <h2 className="mt-4 text-xl font-black leading-tight text-white sm:text-3xl">
                 Registered Legal Entity in Nigeria
               </h2>
 
-              <p className="mt-5 leading-8 text-white/85">
+              <p className="mt-4 text-sm leading-6 text-white/85 sm:text-base sm:leading-8 break-words">
                 Joyful-Light Scientific and Technology Limited is registered as a legal entity under the Corporate Affairs Commission (CAC) in Nigeria.
               </p>
 
-              <p className="mt-5 leading-8 text-white/85">
+              <p className="mt-4 text-sm leading-6 text-white/85 sm:text-base sm:leading-8 break-words">
                 This is supported by the Companies and Allied Matters Act, 2020 (CAMA 2020), which provides the legal framework for the incorporation of companies, registration of business names, and incorporation of trustees in Nigeria.
               </p>
 
@@ -442,7 +444,7 @@ useEffect(() => {
     </div>
 
     <h3 className="text-xl font-black text-[#061d49]">
-      Click to Log Issues
+      Log Payment Issues
     </h3>
 
     <p className="mt-3 leading-7 text-slate-600">
