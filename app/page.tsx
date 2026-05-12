@@ -7,10 +7,8 @@ import { Menu, X, Phone, Mail, MapPin, MessageCircle, BarChart3, Globe2, FileTex
 const company = {
   name: "Joyful-Light Scientific and Technology Limited",
   shortName: "Joyful-Light",
-  location: "Osogbo, Osun State, Nigeria",
-  phone: "+2348160230048",
-  whatsapp: "2348160230048",
-  email: "joyfulllightscifitech@gmail.com",
+  location: "Nigeria",
+  email: "fulllightscifitech@gmail.com",
 };
 const services = [
   {
@@ -46,10 +44,10 @@ const services = [
 ];
 
 const projects = [
-  "Business Website Design",
+  "Website Design & Management",
   "Sales Dashboard Creation",
   "CAC Registration Support",
-  "Company Profile Writing",
+  "Writing Services",
 ];
 
 const faqs = [
@@ -225,7 +223,7 @@ useEffect(() => {
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.7, delay: 0.15 }}
-      className="relative mt-4 lg:-mt-[28rem]"
+    className="relative mt-10 lg:-mt-40"
     >
 
         <div className="rounded-[1.5rem] bg-[#0b63f6] p-6 text-white">
